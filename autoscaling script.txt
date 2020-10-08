@@ -1,0 +1,9 @@
+1 #!/bin/bash
+2 yum update -y
+3 yum install httpd -y
+4 service httpd start
+5 chkconfig httpd on
+6 cd /var/www/html
+7 echo "<html><body>AZ of this instance: " > index.html
+8 curl http://169.254.169.254/latest/meta-data/placement/availability-zone >> index.html
+9 echo "</body></html>" >> index.html
